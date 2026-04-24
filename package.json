@@ -1,0 +1,40 @@
+{
+  "name": "@mukundakatta/ai-eval-forge",
+  "version": "0.1.0",
+  "description": "Zero-dependency eval harness for LLM and agent regression testing.",
+  "type": "module",
+  "bin": {
+    "ai-eval-forge": "src/cli.js",
+    "aef": "src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "evals",
+    "agents",
+    "rag",
+    "regression-testing"
+  ],
+  "author": "Mukunda Katta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MukundaKatta/ai-eval-forge.git"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+
