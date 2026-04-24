@@ -1,6 +1,6 @@
 {
   "name": "@mukundakatta/ai-eval-forge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Zero-dependency eval harness for LLM and agent regression testing.",
   "type": "module",
   "bin": {
@@ -31,10 +31,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MukundaKatta/ai-eval-forge.git"
+    "url": "git+https://github.com/MukundaKatta/ai-eval-forge-js.git"
   },
   "engines": {
     "node": ">=18"
   }
 }
-
