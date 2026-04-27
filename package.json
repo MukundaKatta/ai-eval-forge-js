@@ -31,12 +31,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MukundaKatta/ai-eval-forge.git"
+    "url": "git+https://github.com/MukundaKatta/ai-eval-forge-js.git"
   },
   "bugs": {
-    "url": "https://github.com/MukundaKatta/ai-eval-forge/issues"
+    "url": "https://github.com/MukundaKatta/ai-eval-forge-js/issues"
   },
-  "homepage": "https://github.com/MukundaKatta/ai-eval-forge#readme",
+  "homepage": "https://github.com/MukundaKatta/ai-eval-forge-js#readme",
   "engines": {
     "node": ">=18"
   }
