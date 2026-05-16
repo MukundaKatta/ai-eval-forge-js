@@ -92,3 +92,6 @@ npm run ci
 ```
 
 The CI command syntax-checks the package, runs the Node test suite, and verifies the npm package contents with `npm pack --dry-run`.
+
+`npm run build` is intentionally a syntax-only build gate because the package is
+zero-dependency ESM and ships source directly.
