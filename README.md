@@ -53,9 +53,9 @@ console.log(result.summary.passRate);
 | `json_valid` | none | `JSON.parse(actual)` does not throw. |
 | `json_field` | `path`, `equals` | Parse JSON, walk dot-path (supports array indices like `items.0.name`), deep-equal to `equals`. |
 | `citations` | `expected` (string array), optional `min` (default 1.0) | Each id appears in `actual` as `[id]`, `(id)`, or bare token. Coverage = found/expected. |
-| `expr` | `expr` | Arbitrary JS evaluated against `{actual, expected, input, case}`. Truthy = pass. |
+| `expr` | `expr` | JavaScript expression evaluated in a constrained context against `{actual, expected, input, testCase, ctx}`. Truthy = pass. |
 
-The `expr` check runs arbitrary JavaScript via `new Function` and is intentionally a power-user feature. Do not use it with untrusted cases.
+The `expr` check runs in a timeout-limited VM context with dynamic code generation disabled. Treat it as a power-user feature, and prefer built-in checks for untrusted cases.
 
 ## Programmatic check registration
 
@@ -83,3 +83,12 @@ console.log(result.summary.passRate); // 1
 
 A check function receives `(check, ctx)` and returns `{ ok, score?, message? }`. The `ctx` object exposes `actual`, `expected`, `input`, and `case` (the raw case object).
 
+## Quality Gate
+
+Run the full local production check before publishing:
+
+```bash
+npm run ci
+```
+
+The CI command syntax-checks the package, runs the Node test suite, and verifies the npm package contents with `npm pack --dry-run`.

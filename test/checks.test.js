@@ -139,6 +139,32 @@ test("expr: fail when expression returns falsy or throws", () => {
   assert.equal(broken.ok, false);
 });
 
+test("expr: exposes testCase in the constrained context", () => {
+  const r = runCheck(
+    { type: "expr", expr: "actual.includes('refund') && testCase.tags.includes('policy')" },
+    { actual: "refund approved", expected: "", input: undefined, case: { tags: ["policy"] } },
+  );
+  assert.equal(r.ok, true);
+});
+
+test("expr: rejects constructor escape attempts", () => {
+  const r = runCheck(
+    { type: "expr", expr: "actual.constructor.constructor('return process')()" },
+    { actual: "x", expected: "", input: undefined, case: {} },
+  );
+  assert.equal(r.ok, false);
+  assert.match(r.message, /unsafe/i);
+});
+
+test("expr: times out runaway expressions", () => {
+  const r = runCheck(
+    { type: "expr", expr: "(() => { while (true) {} })()" },
+    { actual: "x", expected: "", input: undefined, case: {} },
+  );
+  assert.equal(r.ok, false);
+  assert.match(r.message, /timed out/i);
+});
+
 test("unknown check type fails gracefully", () => {
   const r = runCheck({ type: "made_up" }, { actual: "x" });
   assert.equal(r.ok, false);
