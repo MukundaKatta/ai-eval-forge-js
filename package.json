@@ -17,6 +17,7 @@
   ],
   "scripts": {
     "check": "find src test -name '*.js' -print0 | xargs -0 -n1 node --check",
+    "build": "npm run check",
     "test": "node --test",
     "pack:check": "npm pack --dry-run",
     "ci": "npm run check && npm test && npm run pack:check"
